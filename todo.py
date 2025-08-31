@@ -1,6 +1,7 @@
 import argparse
 import datetime
 import json
+import os
 
 # this function creates an task and stores it to json file
 def add_task():
@@ -16,17 +17,25 @@ def add_task():
     with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
         json.dump({f'{args.task_name}':{'task_name':f'{args.task_name}', 'task_description':f'{args.task_description}', 'end_date':f'{args.end_date}'}}, ff)
 
-add_task()
+# add_task()
 
 # this function opens the json file and print data on the file to terminal
 def edit_task():
-    with open('./cli_todo.json', 'r') as file:
-        data= json.load(file)
-    print(type(data))
-    # data['Buy milk']['task_description'] = 'get milk from shop'
+    data = {}
+    if os.path.exists('./cli_todo.json'):
+        try:
+
+            with open('./cli_todo.json', 'r') as file:
+                data = json.load(file)
+        except json.JSONDecodeError:
+            data = {}
+
+
+    data['buy milk']['task_description'] = 'get milk from shop3'
     # print(data['task_name']['task_description'])
+  
     for x,y in data.items():
         print(x, y)
 
 
-# edit_task()
+edit_task()
