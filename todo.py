@@ -28,10 +28,15 @@ def edit_task():
             with open('./cli_todo.json', 'r') as file:
                 data = json.load(file)
         except json.JSONDecodeError:
+            size = os.path.getsize('./cli_todo.json')
+            if size == 0:
+                print('file is empty')
             data = {}
+    else:
+        print('no such a file')
 
 
-    data['buy milk']['task_description'] = 'get milk from shop3'
+    # data['buy milk']['task_description'] = 'get milk from shop3'
     # print(data['task_name']['task_description'])
   
     for x,y in data.items():

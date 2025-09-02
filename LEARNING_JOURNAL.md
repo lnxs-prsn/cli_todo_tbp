@@ -21,3 +21,7 @@
     - I am trying in this session to get the edit_task() working on the terminal I can alter the loaded content from the json file but there does not seem to be clean way to edit the data on the file so far it appears that I need to get data from the file edit it and then save whole data back to file even if I want to just add one comma.
     - only solution is read all data edit what I need then append to all data and store whole junk again using 'w' other options would likely lead to errors with my present capacity
     - my goal is to load from the json file and edit then save it back but filesystem does not support such an solution so I need to read file to memory alter it then store back to file
+
+02.8/ 10 min
+    - lot to do today got myself 10 will use it to see if my present system can sustain quick drop ins or not
+    - it was possible even though it took moment of orientation I solved what to print in case that file exists but its empty
