@@ -3,14 +3,14 @@
 ### **CLI Todo Project Blueprint**  
 #### **0. Research & Discovery**  
 - **Knowledge gaps:**  
-  - Python’s `argparse`/`click` for CLI interactions  
-  - File handling (JSON/text) for task persistence  
-  - Best practices for CLI UX (colors, help text)  
+  - Python’s `argparse`/`click` for CLI interactions X 
+  - File handling (JSON/text) for task persistence   X
+  - Best practices for CLI UX (colors, help text)    
 - **References:**  
-  - Python’s `argparse`/`click` documentation  
-  - Popular CLI todo apps (e.g., Taskwarrior) for inspiration  
+  - Python’s `argparse`/`click` documentation        X
+  - Popular CLI todo apps (e.g., Taskwarrior) for inspiration  X
 - **Validation:**  
-  - Quick prototype: Can tasks be added/deleted via CLI?  
+  - Quick prototype: Can tasks be added/deleted via CLI?  X
 
 #### **1. Objective**  
 - **Core functionality:**  

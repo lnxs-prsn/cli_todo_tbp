@@ -22,6 +22,50 @@
     - only solution is read all data edit what I need then append to all data and store whole junk again using 'w' other options would likely lead to errors with my present capacity
     - my goal is to load from the json file and edit then save it back but filesystem does not support such an solution so I need to read file to memory alter it then store back to file
 
-02.8/ 10 min
+02.9/ 10 min
     - lot to do today got myself 10 will use it to see if my present system can sustain quick drop ins or not
     - it was possible even though it took moment of orientation I solved what to print in case that file exists but its empty
+
+03.9/ 30 min
+    - now I can
+      - get data from the json file,
+      - deal with error that may rise when opening the file,
+      - edit the data
+      - write edited data back to file  
+      - next is to edit data directly from the cli.
+      - there are something called subparsers
+
+4.9/ 23 min
+    - Will research more about subparsers
+    - I have to redo the code a bit there is way to do it easier and more structured way 
+    - I should figure out how I can get this kind of knowledge sooner thou it appears that this is one of those learn by touching the stove things
+    - adding global level parser and subparser.
+    - alt+shift allows multi cursors in vscode
+
+5.9/ 15 min
+    - bit tired so very little progress expected
+    - using sub parsers makes me do programming little bit different than am used to all the cli functionality will be outside the functions and functions manage only json file reading and writing
+    - I just found out that something like match/case exists it came at python 3.10 its really good for my project
+    - further searching and I found about set_default(func=function_name) this allows me to connect subparsers directly to functions so there is no if/else or match/case.
+    - I would likely benefit if at the beginning of any project from now on I would have moment of looking how everything should flow so I would avoid these writing and rewriting the code so much
+
+6.9/ 60 min
+    - now I have to rereason bit how I will do the project I will also check how I have so far followed the task blue print and the checklist
+    - my project managment side is lacking so far I have file called in_execution and I have not kept it up to date perhaps I have too much and I need to get rid of some parts 
+    - made quick check with deepseek and it crushed my assumption that I was just doing something instead of following project documentation. I am following the blueprint and the checklist.  
+    - there is just bit improvement to be done in the following check list that is to look at it beginning of every sessions so I wont be taken over by the "problems" of previous session.
+    - so the blueprint is destination and the checklist is the compass to destination.
+    - I dont seem to know how to read checklist anymore
+    - correction I had not looked at it for so long that I forgot how to read it.
+    - everything is as it should be
+    - I used 35 min to do this assessment of the situation so far but now I can proceed with peace of mind
+    - I will try to do this assessment periodically maybe every 10-15 days to see if am still on the correct path.
+    - took care of few small details left in the #0 research and discovery now I know how taskwarrior looks like I jumped to work without looking around not good habit.
+    - next is to refactor the code using set_default. 
+
+7.9/ 60 min
+    - I have began refactoring the code and adding the fucntionalities of delete, list, etc
+    - maybe I should have planning file to avoid problems that arise because I do and then think.
+    - ok now the add_task works as it should be and looks very professional
+    - I achieved better solution than I planned by edit function edits the json file arbitrarily but it does it and I dont yet know how it does it
+    - 

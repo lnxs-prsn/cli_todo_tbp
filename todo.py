@@ -3,24 +3,21 @@ import datetime
 import json
 import os
 
+
+
 # this function creates an task and stores it to json file
-def add_task():
-    parser = argparse.ArgumentParser(description='cli todo')
-
-    parser.add_argument('task_name', type=str, help='write the title of the task')
-    parser.add_argument('task_description', type=str, help='write task description')
-    parser.add_argument('end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30',)
-    
-    args = parser.parse_args()
+def add_task(task_name, task_description, end_date):
+    # args = parser.parse_args() delete later
     # lines below create file and store to the file the tasks 
-    print(args.task_name, args.task_description, args.end_date)
-    with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
-        json.dump({f'{args.task_name}':{'task_name':f'{args.task_name}', 'task_description':f'{args.task_description}', 'end_date':f'{args.end_date}'}}, ff)
 
-# add_task()
+    # print(args.task_name, args.task_description, args.end_date)
+    with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
+        json.dump({f'{task_name}':{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}}, ff)
+
 
 # this function opens the json file and print data on the file to terminal
-def edit_task():
+def edit_task(task_name=None, task_description=None, end_date=None):
+    # parser = argparse.ArgumentParser(description='cli todo') delete later
     data = {}
     if os.path.exists('./cli_todo.json'):
         try:
@@ -34,13 +31,55 @@ def edit_task():
             data = {}
     else:
         print('no such a file')
+    # functionality to edit the tasks
 
 
-    # data['buy milk']['task_description'] = 'get milk from shop3'
-    # print(data['task_name']['task_description'])
-  
+    # writes edited tasks back to json file
     for x,y in data.items():
         print(x, y)
+    with open('./cli_todo.json', 'w') as file:
+        json.dump(data, file)
 
 
-edit_task()
+def delete_task():
+    pass 
+
+
+def list_task():
+    pass
+
+def done_task():
+    pass 
+
+
+
+
+parser = argparse.ArgumentParser(description='cli todo')
+subparser = parser.add_subparsers(help='subcommand help')
+
+# add functionality
+parser_add_task = subparser.add_parser('add', help='add task')
+parser_add_task.set_defaults(func=add_task)
+
+parser_add_task.add_argument('task_name', type=str, help='write the title of the task')
+parser_add_task.add_argument('task_description', type=str, help='write task description')
+parser_add_task.add_argument('end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30',)
+    
+
+
+# editing functionality
+parser_edit_task = subparser.add_parser('edit',help='edit tasks')
+parser_edit_task.set_defaults(func=edit_task)
+parser_edit_task.add_argument('task_name', type=str, nargs='?', help='write the title of the task')
+parser_edit_task.add_argument('task_description', type=str, nargs='?', help='write task description')
+parser_edit_task.add_argument('end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30', nargs='?')
+
+
+
+
+# all the arguments from the cli
+args = parser.parse_args()
+# functions
+add_task(args.task_name, args.task_description, args.end_date)
+
+edit_task(args.task_name, args.task_description, args.end_date)
