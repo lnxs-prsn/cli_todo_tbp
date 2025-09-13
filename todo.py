@@ -31,14 +31,22 @@ def edit_task(task_name=None, task_description=None, end_date=None):
             data = {}
     else:
         print('no such a file')
+    inner_data = [c for b,c in data.items()]
+    print(inner_data)
     # functionality to edit the tasks
+    # for e,a in vars(args).items():
+    #     if a==None:
+    #         for r,w in data.items():
+    #             for f,g in w.items():
+    #                 if e==f:
+    #                     print(a,g)
 
 
     # writes edited tasks back to json file
-    for x,y in data.items():
-        print(x, y)
-    with open('./cli_todo.json', 'w') as file:
-        json.dump(data, file)
+    # for x,y in data.items():
+        # print(x, y)
+    # with open('./cli_todo.json', 'w') as file:
+    #     json.dump(data, file)
 
 
 def delete_task():
@@ -70,9 +78,9 @@ parser_add_task.add_argument('end_date', type=lambda s: datetime.datetime.strpti
 # editing functionality
 parser_edit_task = subparser.add_parser('edit',help='edit tasks')
 parser_edit_task.set_defaults(func=edit_task)
-parser_edit_task.add_argument('task_name', type=str, nargs='?', help='write the title of the task')
-parser_edit_task.add_argument('task_description', type=str, nargs='?', help='write task description')
-parser_edit_task.add_argument('end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30', nargs='?')
+parser_edit_task.add_argument('--tname', type=str, dest='task_name', help='write the title of the task')
+parser_edit_task.add_argument('--desc', type=str, dest='task_description', help='write task description')
+parser_edit_task.add_argument('--end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30', dest='end_date')
 
 
 
@@ -80,6 +88,9 @@ parser_edit_task.add_argument('end_date', type=lambda s: datetime.datetime.strpt
 # all the arguments from the cli
 args = parser.parse_args()
 # functions
-add_task(args.task_name, args.task_description, args.end_date)
+# add_task(args.task_name, args.task_description, args.end_date)
 
 edit_task(args.task_name, args.task_description, args.end_date)
+
+
+

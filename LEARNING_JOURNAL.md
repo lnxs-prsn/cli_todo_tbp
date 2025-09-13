@@ -68,4 +68,31 @@
     - maybe I should have planning file to avoid problems that arise because I do and then think.
     - ok now the add_task works as it should be and looks very professional
     - I achieved better solution than I planned by edit function edits the json file arbitrarily but it does it and I dont yet know how it does it
-    - 
+
+8.9/ 24 min
+    - I used nargs='?' as parser expects fixed order led to situation that user would need to write every argument or the first argument would have taken what ever was given.
+    - solution might be dest which directs? while in reality it renames but not yet clear.
+
+9.9/ 30 min 
+    - I have resolved the other fields but date field is still an problem 
+    - if I make it optional I need to resolve possible errors I will check the docs if there is some easy solution
+    - ok it was actually lot easier I just keep using lambda in the type=  
+    - next I need to check if there is none received from the argparse and in that case ensure that it will not replace the stored data will likely use the new thing I learned match/case
+
+11.9/ 30 min
+    - yesterday searching trainee positions.
+    - scheduled this bit wrong prayer is happening soon so likely lot less than 30 min
+    - lots of problems 
+
+12.9/ 10 min
+    - got extra shift so the 60 intended turned to 10 min
+    - goal is to solve how to turn the argparser str output to dict so 
+    - success I just put what ever the function receives from argparser which is object to vars() which converts it to dict
+
+13.9  30 min
+    - today I hope to finally have working edit_task function after which the project should come to fast conclusion 
+    - as I have then solved most of the data flow processess between different part of the project 
+    - I learned from this experience to figure out the project bit parts and how they interact if I figure that out at the planning stage I think I can finnish projects faster
+    - right know 
+      - am trying to iterate throught the args received from the argparser
+      - see if there is None in the args in that case i will replace None with value from the json data
