@@ -6,13 +6,13 @@ import os
 
 
 # this function creates an task and stores it to json file
-def add_task(task_name, task_description, end_date):
+def add_task(task_name, task_description, end_date, **args):
     # args = parser.parse_args() delete later
     # lines below create file and store to the file the tasks 
 
     # print(args.task_name, args.task_description, args.end_date)
     with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
-        json.dump({f'{task_name}':{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}}, ff)
+        json.dump({f'{args.task_name}':{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}}, ff)
 
 
 # this function opens the json file and print data on the file to terminal
@@ -31,22 +31,35 @@ def edit_task(task_name=None, task_description=None, end_date=None):
             data = {}
     else:
         print('no such a file')
-    inner_data = [c for b,c in data.items()]
-    print(inner_data)
+
+
+    inner_dat1 = [c for b,c in data.items()]
+    print(data)
+
+
     # functionality to edit the tasks
-    # for e,a in vars(args).items():
-    #     if a==None:
-    #         for r,w in data.items():
-    #             for f,g in w.items():
-    #                 if e==f:
-    #                     print(a,g)
+    if task_name != None:
+        data['hello']['task_name'] = task_name
+    else:
+        pass
+    if task_description != None:
+        data['hello']['task_description'] = task_description
+    else:
+        pass
+    if end_date != None:
+        data['hello']['end_date'] = end_date.strftime('%Y-%m-%d')
+
+    else:
+        pass
+
+
 
 
     # writes edited tasks back to json file
     # for x,y in data.items():
-        # print(x, y)
-    # with open('./cli_todo.json', 'w') as file:
-    #     json.dump(data, file)
+    #     print(x, y)
+    with open('./cli_todo.json', 'w') as file:
+        json.dump(data, file)
 
 
 def delete_task():

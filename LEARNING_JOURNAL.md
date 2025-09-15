@@ -96,3 +96,14 @@
     - right know 
       - am trying to iterate throught the args received from the argparser
       - see if there is None in the args in that case i will replace None with value from the json data
+  - I was too ambitious I found out I know what I need to do and generally know how to do it but unfortunately I dont know how to do it specificaly
+  - I really need the course to polish my fundamentals 
+
+14.9/ 30 min
+    - I figured out last time that I need to get inner dict in my json file. I used nested dict to separate different tasks in file.
+    - in coherent day realized that I over complicated simple thing
+
+15.9/ 27 min
+    - I already know arguments fuction takes. All I need to do is just simple if/elif/else statement
+    - its true what its said that beginners cannot see the forest from the woods 
+    - ok it took longer than 27 min intended but now I have stored edited data to json file everything is hard coded right now so next I need to figure out how not to hard code everything 
