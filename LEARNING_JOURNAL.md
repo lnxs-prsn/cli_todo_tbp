@@ -104,6 +104,37 @@
     - in coherent day realized that I over complicated simple thing
 
 15.9/ 27 min
-    - I already know arguments fuction takes. All I need to do is just simple if/elif/else statement
+    - I already know arguments function takes. All I need to do is just simple if/elif/else statement
     - its true what its said that beginners cannot see the forest from the woods 
     - ok it took longer than 27 min intended but now I have stored edited data to json file everything is hard coded right now so next I need to figure out how not to hard code everything 
+
+19.9/ 9 min
+    - very little time I missed this.
+
+
+20.9/ 30s
+    - too little time but I kept the momentum going.
+
+21.9/ 60 min
+    - finally back now I have to resolve how can I access stored data without hardcoding I have been asking AI to guide me withoug giving solutions
+      - my initial design was flawed 
+        - json.dump({f'{args.task_name}':{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}}
+        - above leads to situation  where I need to hardcode the key of the outer dict or build system where the user gives the name of the task which they want to edit
+        - option 1 is senseless and option 2 scope is lot bigger than intended despite being from human perspective intuitive its very challenging for the computer
+      - solution I will make list of dict and use one key value of the dict to find out 
+      - I also have to go and fix my add_task function
+        - it does not have capacity to append tasks it 'w' which overwrites contents of file if it exists else creates a new file
+  
+
+22.9/ 5 min
+    - very short moment
+    - now I need to open the file get the list append it and store it back to file which will likely use the 'w' or 'w+' 
+  
+
+23.9/ 15 min
+    -  continue from yesterday now I can append the list but if I append the json file throws an error after adding the second file 
+       -  reason there is no comma between data dicts in the list
+  
+24.9/ 1 min
+    - not much I have been planning through out the day about the project I dont understand why it did not show the appended list in the json file previously
+    - 

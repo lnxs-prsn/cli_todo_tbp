@@ -9,10 +9,25 @@ import os
 def add_task(task_name, task_description, end_date, **args):
     # args = parser.parse_args() delete later
     # lines below create file and store to the file the tasks 
-
-    # print(args.task_name, args.task_description, args.end_date)
-    with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
-        json.dump({f'{args.task_name}':{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}}, ff)
+    if os.path.exists('./cli_todo.json') and os.path.getsize('./cli_todo.json')!=0:
+        print('file exists already')
+        print(os.path.getsize('./cli_todo.json'))
+        with open('./cli_todo.json', 'r+', encoding='utf-8') as fa:
+            data = json.load(fa)
+            task = {'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}
+            data.append(task)
+            print(data)
+        # with open('./cli_todo.json', 'w', encoding='utf-8') as fs:
+        #     # json(data)
+        #     print(data)
+        #     pass
+            
+    else:
+        # print(args.task_name, args.task_description, args.end_date)
+        with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
+            task = [{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'},]
+            # print(task)
+            json.dump(task, ff)
 
 
 # this function opens the json file and print data on the file to terminal
@@ -34,20 +49,20 @@ def edit_task(task_name=None, task_description=None, end_date=None):
 
 
     inner_dat1 = [c for b,c in data.items()]
-    print(data)
+    print(type(data))
 
 
     # functionality to edit the tasks
     if task_name != None:
-        data['hello']['task_name'] = task_name
+        data['task_name'] = task_name
     else:
         pass
     if task_description != None:
-        data['hello']['task_description'] = task_description
+        data['task_description'] = task_description
     else:
         pass
     if end_date != None:
-        data['hello']['end_date'] = end_date.strftime('%Y-%m-%d')
+        data['end_date'] = end_date.strftime('%Y-%m-%d')
 
     else:
         pass
@@ -101,9 +116,9 @@ parser_edit_task.add_argument('--end_date', type=lambda s: datetime.datetime.str
 # all the arguments from the cli
 args = parser.parse_args()
 # functions
-# add_task(args.task_name, args.task_description, args.end_date)
+add_task(args.task_name, args.task_description, args.end_date)
 
-edit_task(args.task_name, args.task_description, args.end_date)
+# edit_task(args.task_name, args.task_description, args.end_date)
 
 
 
