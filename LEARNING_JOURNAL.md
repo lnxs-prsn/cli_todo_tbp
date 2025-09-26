@@ -137,4 +137,18 @@
   
 24.9/ 1 min
     - not much I have been planning through out the day about the project I dont understand why it did not show the appended list in the json file previously
-    - 
+
+25.9/ 5 min
+    - made the add task function work 
+
+26.9/ 60 min
+    - next to fix the edit_task function so the user can find specific task from the list of tasks 
+    - best approach is likely to first loop the list and then see if value is in the dicts
+    - I will do this intuitively or impulsively this time but I intend to learn a way to do this with structure
+    - editing specific task is now possible 
+    - resolved the problem in the main() 
+      - I specifically called each function add,edit etc which led to all of them running but I found out that set_defaults does it for me so it was unnessessary
+    - next task is to do the task_list func
+      - list fuction is ready
+    - next is delete function
+      - 
