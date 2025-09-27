@@ -151,4 +151,15 @@
     - next task is to do the task_list func
       - list fuction is ready
     - next is delete function
-      - 
+  
+27.9/ 30 min
+    - solving how to delete dict that is inside list
+      - i can locate first the dict storing the task using a loop and then locate its index that way
+      - but I will see if there are other easier ways to do delete the task
+      - solution was to find the correct dict and use remove() on the list
+    - next is done_task()
+      - I have problem deciding how to do it
+        - create new file 
+          - that stores all the done tasks and allow user to manually move them to done file
+        - keep same file and add new field done
+          - then after task is marked done move to bottom of the tasks so there would be clear distinction 

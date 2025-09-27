@@ -74,14 +74,26 @@ def edit_task(task_name=None, task_description=None, end_date=None):
         json.dump(data, file)
 
 
-def delete_task(args):
+def delete_task(task_name):
     print('hello from del')
-    if os.path.exists('./cli_todo.json', 'r', encoding='utf-8') as ff:
+    if os.path.exists('./cli_todo.json'):
         try:
+            with open('./cli_todo.json', 'r', encoding='utf-8') as ff:
+                data = json.load(ff)
+                pass
+        except json.JSONDecodeError:
+            size = os.path.getsize('./cli_todo.json')
+            if size == 0:
+                print('file is empty')
             pass
-    pass 
+    print(data)
+    for x in data:
+        for a,s in x.items():
+            if task_name == s:
+                data.remove(x)
+                
 
-
+    print(data)
 def task_list(args):
     print('hello')
 
@@ -134,7 +146,11 @@ def main():
 
     # delete task functionality
     parser_delete_task = subparser.add_parser('del', help='delete task')
-    parser_delete_task.set_defaults(func=delete_task)
+    parser_delete_task.set_defaults(func=lambda args: delete_task(args.task_name))
+    
+    parser_delete_task.add_argument('--tname', type=str, dest='task_name', help='write the task to delete')
+
+
 
 
 
