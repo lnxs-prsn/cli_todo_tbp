@@ -163,3 +163,43 @@
           - that stores all the done tasks and allow user to manually move them to done file
         - keep same file and add new field done
           - then after task is marked done move to bottom of the tasks so there would be clear distinction 
+
+28.9/ 60 min
+    - today I will continue figuring out which solution to problem I should choose I will apply what I said I would in 26.9
+      - structured way to decide solution to problem
+        - how should I implement done functionality to the todo project
+          - 1. add new field called done and edit it using the edit_task()
+            - fast and easy all I have to do is just call the delete_task() if user edits the field
+          - 2. create done file and add done flag to cli it would move task to different file where the user could access all the past tasks
+            - more effort and might go beyond the scope of my present learning goal (over engineering)
+      - solution
+        - option 1 for now its easy to expand later if I decide to learn something more it can even become my expand further project
+    - done functionality is added now I have completed the project
+
+
+
+here are the evaluations of sr devs (gpt) and (deepseek)
+Overall Assessment (gpt)
+
+Structured Thinking: ✅ Your learning journal closely mirrors blueprint and checklist. You tracked gaps → solutions → testing → reflection.
+
+Project Execution: ✅ Iterative, aligned with MVP, clear reasoning behind design choices.
+
+Improvements:
+
+Could explicitly mark each journal entry with checklist item references (0.A, 1.B, etc.) for easier auditing.
+
+Could summarize lessons learned per milestone to reinforce reflection.
+
+
+ Overall Assessment: (deepseek)
+
+**Structure Score: 8.5/10**
+
+Your thinking process shows **strong alignment** with the blueprint and checklist. The main gaps were in **consistent planning discipline** rather than technical execution. You demonstrated excellent problem-solving and learning adaptation.
+
+## **Key Success Patterns:**
+1. **Documentation habit** - your journal saved context after breaks
+2. **Incremental testing** - built and validated each component
+3. **Scope discipline** - resisted feature creep
+4. **Learning orientation** - researched solutions systematically

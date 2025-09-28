@@ -6,33 +6,35 @@ import os
 
 
 # this function creates an task and stores it to json file
-def add_task(task_name, task_description, end_date, **args):
+def add_task(task_name, task_description, end_date, done, **args):
     # args = parser.parse_args() delete later
     # lines below create file and store to the file the tasks 
+    print(done)
     if os.path.exists('./cli_todo.json') and os.path.getsize('./cli_todo.json')!=0:
         print('file exists already')
         print(os.path.getsize('./cli_todo.json'))
         with open('./cli_todo.json', 'r', encoding='utf-8') as fa:
             data = json.load(fa)
-            task = {'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'}
+            task = {'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}', 'done':f'{done}'}
+            print(task)
             data.append(task)
-            print(data)
+            # print(data)
         with open('./cli_todo.json', 'w', encoding='utf-8') as fs:
             # json(data)
-            print(data)
+            # print(data)
             json.dump(data, fs)
             pass
             
     else:
         # print(args.task_name, args.task_description, args.end_date)
         with open('./cli_todo.json', 'w', encoding='utf-8') as ff:
-            task = [{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}'},]
+            task = [{'task_name':f'{task_name}', 'task_description':f'{task_description}', 'end_date':f'{end_date}', 'done':f'{done}'},]
             # print(task)
             json.dump(task, ff)
 
 
 # this function opens the json file and print data on the file to terminal
-def edit_task(task_name=None, task_description=None, end_date=None):
+def edit_task(task_name=None, task_description=None, end_date=None, done=None):
     # parser = argparse.ArgumentParser(description='cli todo') delete later
     data = {}
     if os.path.exists('./cli_todo.json'):
@@ -64,6 +66,9 @@ def edit_task(task_name=None, task_description=None, end_date=None):
         pass
     if end_date != None:
         task['end_date'] = end_date.strftime('%Y-%m-%d')
+    
+    if end_date != None:
+        task['done'] = done
 
     else:
         pass
@@ -94,6 +99,12 @@ def delete_task(task_name):
                 
 
     print(data)
+
+    with open('./cli_todo.json', 'w', encoding='utf-8')as ff:
+        json.dump(data, ff)
+
+
+
 def task_list(args):
     print('hello')
 
@@ -123,21 +134,21 @@ def main():
 
     # add functionality
     parser_add_task = subparser.add_parser('add', help='add task')
-    parser_add_task.set_defaults(func=lambda args: add_task(args.task_name, args.task_description, args.end_date))
+    parser_add_task.set_defaults(func=lambda args: add_task(args.task_name, args.task_description, args.end_date, args.done))
 
     parser_add_task.add_argument('task_name', type=str, help='write the title of the task')
     parser_add_task.add_argument('task_description', type=str, help='write task description')
     parser_add_task.add_argument('end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='write end date of the task example format 2025-08-30',)
-        
+    parser_add_task.add_argument('done', nargs='?', choices=('yes', 'no'), default='no',)        
 
 
     # editing functionality
     parser_edit_task = subparser.add_parser('edit',help='edit tasks')
-    parser_edit_task.set_defaults(func= lambda args: edit_task(args.task_name, args.task_description, args.end_date))
+    parser_edit_task.set_defaults(func= lambda args: edit_task(args.task_name, args.task_description, args.end_date, args.done))
     parser_edit_task.add_argument('--tname', type=str, dest='task_name', help='write the title of the task you want to edit')
     parser_edit_task.add_argument('--desc', type=str, dest='task_description', help='edit task description')
     parser_edit_task.add_argument('--end_date', type=lambda s: datetime.datetime.strptime(s, '%Y-%m-%d').date(), help='edit end date of the task example format 2025-08-30', dest='end_date')
-
+    parser_edit_task.add_argument('--tdone', dest='done', choices=('yes', 'no'), default='no')
 
     # list functionality
     parser_task_list = subparser.add_parser('list', help='task list')
@@ -169,3 +180,27 @@ def main():
 
 
 main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
